@@ -36,3 +36,23 @@
     transform: rotate(360deg);
   }
 }
+
+.col-padding {
+  padding: 20px;
+}
+
+a {
+  color: #343a3f;
+}
+.nav {
+  padding-top: 10px;
+}
+
+.nav-pills .nav-link {
+  border-radius: 20px;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  background-color: #343a3f;
+}
