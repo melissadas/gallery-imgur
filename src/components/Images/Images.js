@@ -6,7 +6,8 @@ import {
     Col,
     Modal,
     OverlayTrigger,
-    Tooltip
+    Tooltip,
+    Button
 } from "react-bootstrap";
 import { Player } from 'video-react';
 
@@ -85,7 +86,7 @@ class Images extends React.Component {
                                     delay={{ show: 250, hide: 400 }}
                                     overlay={<Tooltip id="button-tooltip-2">Upvotes</Tooltip>}
                                 >
-                                    <span><i class="fa fa-thumbs-up"></i>
+                                    <span><i className="fa fa-thumbs-up"></i>
                                         {this.props.image.ups}
                                     </span>
                                 </OverlayTrigger>
@@ -116,7 +117,7 @@ class Images extends React.Component {
                     </Modal.Footer>
                 </Modal>
                 <div className="card card-block">
-                    <a onClick={this.seeDetails.bind(this, this.props.image)}> <img src={this.showGalleryImage()} alt=".."></img></a>
+                    <Button variant="link" onClick={this.seeDetails.bind(this, this.props.image)}><img src={this.showGalleryImage()} alt=".."></img></Button>
                     <h5 className="card-title mt-3 mb-3">{this.props.image.title}</h5>
                 </div>
             </>
