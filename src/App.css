@@ -56,3 +56,22 @@ a {
 .nav-pills .show > .nav-link {
   background-color: #343a3f;
 }
+
+.check-box {
+  float: right;
+  margin-top: 1rem;
+}
+
+.drop-down-margin {
+  margin-top: 0.7rem;
+}
+
+.sort-margin {
+  margin-top: 1rem;
+}
+
+.btn-primary {
+  color: black;
+  background-color: white;
+  border-color: #575e65;
+}

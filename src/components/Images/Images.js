@@ -4,7 +4,9 @@ import './Images.css';
 import {
     Row,
     Col,
-    Modal
+    Modal,
+    OverlayTrigger,
+    Tooltip
 } from "react-bootstrap";
 import { Player } from 'video-react';
 
@@ -71,26 +73,44 @@ class Images extends React.Component {
                         {this.state.isVideo ? (<Player
                             playsInline
                             src={this.state.imageSource}
-                        />) : (<img src={this.state.imageSource} class="img-fluid" alt="Responsive image"></img>)}
+                        />) : (<img src={this.state.imageSource} class="img-fluid" alt=""></img>)}
 
                         {this.props.image.description ? <p>{this.props.image.description}</p> : ''}
                     </Modal.Body>
                     <Modal.Footer className="footer-align">
                         <Row className="full-width">
                             <Col xs={12} md={4} lg={4}>
-                                <span><i class="fa fa-thumbs-up"></i>
-                                    {this.props.image.ups}
-                                </span>
+                                <OverlayTrigger
+                                    placement="right"
+                                    delay={{ show: 250, hide: 400 }}
+                                    overlay={<Tooltip id="button-tooltip-2">Upvotes</Tooltip>}
+                                >
+                                    <span><i class="fa fa-thumbs-up"></i>
+                                        {this.props.image.ups}
+                                    </span>
+                                </OverlayTrigger>
                             </Col>
                             <Col xs={12} md={4} lg={4}>
-                                <span><i class="fa fa-thumbs-down"></i>
-                                    {this.props.image.downs}
-                                </span>
+                                <OverlayTrigger
+                                    placement="right"
+                                    delay={{ show: 250, hide: 400 }}
+                                    overlay={<Tooltip id="button-tooltip-2">Downvotes</Tooltip>}
+                                >
+                                    <span><i class="fa fa-thumbs-down"></i>
+                                        {this.props.image.downs}
+                                    </span>
+                                </OverlayTrigger>
                             </Col>
                             <Col xs={12} md={4} lg={4}>
-                                <span><i class="fa fa-bullseye"></i>
-                                    {this.props.image.score}
-                                </span>
+                                <OverlayTrigger
+                                    placement="right"
+                                    delay={{ show: 250, hide: 400 }}
+                                    overlay={<Tooltip id="button-tooltip-2">Score</Tooltip>}
+                                >
+                                    <span><i class="fa fa-bullseye"></i>
+                                        {this.props.image.score}
+                                    </span>
+                                </OverlayTrigger>
                             </Col>
                         </Row>
                     </Modal.Footer>
@@ -98,8 +118,8 @@ class Images extends React.Component {
 
 
                 <div class="card card-block">
-                    <a onClick={this.seeDetails.bind(this, this.props.image)} > <img src={this.showGalleryImage()} alt=".."></img></a>
-                    <h5 class="card-title mt-3 mb-3">{this.props.image.title}</h5>
+                    <a onClick={this.seeDetails.bind(this, this.props.image)}> <img src={this.showGalleryImage()} alt=".."></img></a>
+                    <h5 className="card-title mt-3 mb-3">{this.props.image.title}</h5>
                 </div>
 
 

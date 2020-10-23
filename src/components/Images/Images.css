@@ -31,6 +31,7 @@ div [class^="col-"] {
   font-size: 15px;
   transition: 1s;
   cursor: pointer;
+  text-align: left;
 }
 .card-title i {
   font-size: 15px;
