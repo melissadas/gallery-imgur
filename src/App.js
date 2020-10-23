@@ -160,11 +160,8 @@ class App extends Component {
                     </Form.Control>
                   </Form>
                 ) : ''}
-
-
               </Col>
               <Col xs={12} md={{ span: 4 }}>
-
                 <Form inline>
                   <Form.Label className="my-1 mr-2" htmlFor="sortSelectPref">
                     Sort By:
@@ -181,12 +178,8 @@ class App extends Component {
                     ))}
                   </Form.Control>
                 </Form>
-
               </Col>
-
             </Row>
-
-
             <Row id="gallery">
               {this.state.galleryImages.map((img, key) => {
                 return img.cover ?
