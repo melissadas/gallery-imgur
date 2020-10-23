@@ -115,14 +115,10 @@ class Images extends React.Component {
                         </Row>
                     </Modal.Footer>
                 </Modal>
-
-
-                <div class="card card-block">
+                <div className="card card-block">
                     <a onClick={this.seeDetails.bind(this, this.props.image)}> <img src={this.showGalleryImage()} alt=".."></img></a>
                     <h5 className="card-title mt-3 mb-3">{this.props.image.title}</h5>
                 </div>
-
-
             </>
         )
     }

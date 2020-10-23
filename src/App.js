@@ -1,15 +1,13 @@
 import React, { Component, lazy, Suspense } from 'react';
 import Header from './components/Header/Header';
 import Loader from './components/Loader/Loader';
-import Paginate from './components/Paginate/Paginate';
 import './App.css';
 import {
   Col,
   Row,
   Container,
   Nav,
-  Dropdown,
-  DropdownButton,
+  Form
 } from 'react-bootstrap';
 import fetch from 'node-fetch';
 
@@ -90,26 +88,11 @@ class App extends Component {
       );
   }
 
-  handleCheckboxChange = (event) => {
-    //https://api.imgur.com/3/gallery/hot/viral
-    console.log(event.target.checked);
-    this.setState({ checked: event.target.checked })
-
-
-  }
-
-
   handleSortChange = (event) => {
+    console.log(event.target.value);
     this.setState({
       sortDefaultValue: event.target.value
     })
-    // if (event.target.value === "viral") {
-    //   this.setState({ checked: true })
-
-    // }
-    // else {
-    //   this.setState({ checked: false })
-    // }
 
     fetch(API_URL + "/gallery/hot/" + event.target.value.toLowerCase(), {
       headers: { Authorization: 'Client-ID ' + CLIENT_ID },
@@ -159,43 +142,45 @@ class App extends Component {
                 </Nav>
               </Col>
               <Col xs={12} md={4}>
-                {/* <Form>
-                  <Form.Group controlId="formBasicCheckbox" className="check-box">
-                    <Form.Check type="checkbox" label="Check me out" checked={this.state.checked} onChange={(event) => this.handleCheckboxChange(event)} />
-                  </Form.Group>
-                </Form> */}
-                {this.state.showTimeMenu ? (<Row>
-                  <Col xs={6} md={3} className="text-right">
-                    <label className="sort-margin">Sort By: </label>
-                  </Col>
-                  <Col xs={6} md={3}>
-                    <DropdownButton id="dropdown-item-button" className="drop-down-margin" title={this.state.timeDefaultValue}>
-                      {TIME.map((time, key) => (
-                        <Dropdown.Item as="button" className="drop-down-item" value={time} onClick={(event) => this.handleTimeChange(event)}>{time}</Dropdown.Item>
-
+                {this.state.showTimeMenu ? (
+                  <Form inline>
+                    <Form.Label className="my-1 mr-2" htmlFor="timeSelectPref">
+                      Sort By:
+                      </Form.Label>
+                    <Form.Control
+                      as="select"
+                      className="my-1 mr-sm-2"
+                      id="bySort"
+                      custom
+                      onChange={(event) => this.handleTimeChange(event)}
+                    >
+                      {TIME.map((timeBy, key) => (
+                        <option key={key} value={timeBy}>{timeBy}</option>
                       ))}
-
-                    </DropdownButton>
-                  </Col>
-                </Row>) : ''}
+                    </Form.Control>
+                  </Form>
+                ) : ''}
 
 
               </Col>
-              <Col xs={12} md={4}>
-                <Row>
-                  <Col xs={6} md={3} className="text-right">
-                    <label className="sort-margin">Sort By: </label>
-                  </Col>
-                  <Col xs={6} md={3}>
-                    <DropdownButton id="dropdown-item-button" className="drop-down-margin" title={this.state.sortDefaultValue}>
-                      {SORT.map((sortBy, key) => (
-                        <Dropdown.Item as="button" className="drop-down-item" value={sortBy} onClick={(event) => this.handleSortChange(event)}>{sortBy}</Dropdown.Item>
+              <Col xs={12} md={{ span: 4 }}>
 
-                      ))}
-
-                    </DropdownButton>
-                  </Col>
-                </Row>
+                <Form inline>
+                  <Form.Label className="my-1 mr-2" htmlFor="sortSelectPref">
+                    Sort By:
+                  </Form.Label>
+                  <Form.Control
+                    as="select"
+                    className="my-1 mr-sm-2"
+                    id="bySort"
+                    custom
+                    onChange={(event) => this.handleSortChange(event)}
+                  >
+                    {SORT.map((sortBy, key) => (
+                      <option key={key} value={sortBy}>{sortBy}</option>
+                    ))}
+                  </Form.Control>
+                </Form>
 
               </Col>
 
